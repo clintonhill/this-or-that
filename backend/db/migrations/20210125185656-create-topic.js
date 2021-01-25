@@ -22,7 +22,8 @@ module.exports = {
       },
       slug: {
         allowNull: false,
-        type: Sequelize.STRING(12)
+        type: Sequelize.STRING(12),
+        unique: true
       },
       createdAt: {
         allowNull: false,

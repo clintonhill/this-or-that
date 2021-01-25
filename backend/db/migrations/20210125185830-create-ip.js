@@ -10,7 +10,8 @@ module.exports = {
       },
       ipAddress: {
         allowNull: false,
-        type: Sequelize.STRING(32)
+        type: Sequelize.STRING(32),
+        unique: true
       },
       createdAt: {
         allowNull: false,
