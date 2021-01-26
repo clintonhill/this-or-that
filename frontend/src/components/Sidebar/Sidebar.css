@@ -1,0 +1,16 @@
+.sidenav-container {
+  font-size: 1.25rem;
+  height: 100vh;
+  width: 100px;
+  position: absolute;
+  left: 0;
+  text-align: left;
+  background-color:mistyrose;
+}
+.sidenav-container > ul > li {
+  text-decoration: none;
+  list-style: none;
+  border: 1px solid white;
+  margin-bottom: 0;
+  padding: 2px;
+}

@@ -5,6 +5,7 @@ import SignupFormModal from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import QuestionsPage from './components/QuestionsPage';
+import Sidebar from "./components/Sidebar";
 
 const questionMock = {
   question: {
@@ -39,6 +40,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <Sidebar />
       {isLoaded && (
         <Switch>
           <Route exact path='/questions'>

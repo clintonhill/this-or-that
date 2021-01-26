@@ -1,0 +1,38 @@
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: mistyrose;
+  height: 60px;
+}
+
+.buttons {
+  height: 80%;
+  display: flex;
+}
+
+.buttons > ul {
+  margin: 0;
+}
+
+.buttons > ul > li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.buttons > ul > li > button {
+  margin-bottom: 0;
+  background-color: rgb(255, 232, 225)
+}
+
+.logo {
+  background-image: url('./LogoMakr-1PvVot.png');
+  background-position: center;
+  background-size: contain;
+  box-sizing: content-box;
+  background-repeat: no-repeat;
+  height:100%;
+  width: 100px;
+}
