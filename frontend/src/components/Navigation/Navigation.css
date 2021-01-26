@@ -1,0 +1,29 @@
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: mistyrose;
+  height: 60px;
+}
+
+.buttons {
+  height: 80%;
+}
+
+li {
+  list-style-type: none;
+}
+
+buttons > ul > li button {
+  margin-bottom: 0;
+}
+
+.logo {
+  background-image: url('./LogoMakr-1PvVot.png');
+  background-position: center;
+  background-size: contain;
+  box-sizing: content-box;
+  background-repeat: no-repeat;
+  height:100%;
+  width: 100px;
+}
