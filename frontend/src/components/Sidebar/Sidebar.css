@@ -1,8 +1,19 @@
+.spacer {
+  font-size: 1.25rem;
+  height: 60px;
+  width: 124px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background-color: mistyrose;
+}
+
 .sidenav-container {
   font-size: 1.25rem;
   height: 100vh;
   width: 100px;
-  position: absolute;
+  position: fixed;
   left: 0;
   text-align: left;
   background-color:mistyrose;

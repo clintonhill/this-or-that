@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 
 import './AskQuestionPage.css';
+import AskForm from './AskForm';
 
 function AskQuestionPage() {
 
@@ -13,6 +14,7 @@ function AskQuestionPage() {
       <div className='main-header'>
         Welcome to the Ask Question Page.
       </div>
+      <AskForm />
     </div>
   )
 }
