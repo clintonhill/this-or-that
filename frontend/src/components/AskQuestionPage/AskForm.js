@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AnswerInput from './AnswerInput';
+import { addQuestion } from '../../store/questions'
 
 function AskForm() {
 
@@ -9,6 +10,7 @@ function AskForm() {
   const [answers, setAnswers] = useState([{topic: '', details: ''}, {topic: '', details: ''}]);
 
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user)
 
   const addAnswer = () => {
     setAnswers(oldAnswers => [...oldAnswers, { topic: '', details: ''}])
@@ -26,10 +28,12 @@ function AskForm() {
     const questionData = {
       question: {
         title: question,
-        detail: questionDetails,
+        body: questionDetails,
       },
-      answers
+      answers,
+      ownerId: sessionUser.id
     }
+    dispatch(addQuestion(questionData))
   }
 
   return (

@@ -1,4 +1,4 @@
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 
 import { fetch } from './csrf';
 
@@ -19,8 +19,17 @@ const setQuestion = (question) => {
 
 export const addQuestion = data => async (dispatch) => {
   //Question
-  const { title, detail: body } = data.question;
-  const slug = nanoid.nanoid();
+  const { title, body} = data.question;
+  const { ownerId } = data;
+  const slug = 'sdfsdfsdfsd';
+
+  const opts = {
+    method: 'post',
+    body: JSON.stringify({title, body, ownerId, slug})
+  }
+  const response = await fetch('/api/questions', opts)
+  dispatch(setQuestion(response.data.question))
+  return response;
 }
 
 //Reducer
@@ -29,6 +38,9 @@ export const addQuestion = data => async (dispatch) => {
 export default function questionsReducer(state = {}, action){
   let newState;
   switch(action.type) {
+    case SET_QUESTION:
+      newState = {...state, ...action.payload}
+      return newState;
     default:
       return state;
   }
