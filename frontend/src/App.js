@@ -6,6 +6,10 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import QuestionsPage from './components/QuestionsPage';
 import Sidebar from "./components/Sidebar";
+import IndexPage from './components/IndexPage';
+import AskQuestionPage from "./components/AskQuestionPage";
+import ProfilePage from "./components/ProfilePage";
+import RandomQuestionPage from "./components/RandomQuestionPage";
 
 const questionMock = {
   question: {
@@ -43,11 +47,20 @@ function App() {
       <Sidebar />
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <IndexPage />
+          </Route>
+          <Route exact path='/profile'>
+            <ProfilePage />
+          </Route>
+          <Route exact path='/ask'>
+            <AskQuestionPage />
+          </Route>
           <Route exact path='/questions'>
             <QuestionsPage questionDetails={questionMock}/>
           </Route>
-          <Route path="/signup">
-            <SignupFormModal />
+          <Route exact path='/random'>
+            <RandomQuestionPage />
           </Route>
         </Switch>
       )}
