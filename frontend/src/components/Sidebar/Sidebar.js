@@ -19,7 +19,7 @@ function Sidebar(){
           <NavLink exact to="/questions">Browse Questions</NavLink>
         </li>
         <li>
-          <NavLink exact to="#">Answer Random Question</NavLink>
+          <NavLink exact to="#">Random Question</NavLink>
         </li>
       </ul>
     </div>
