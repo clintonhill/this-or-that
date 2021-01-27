@@ -1,26 +1,39 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import AnswerInput from './AnswerInput';
 
 function AskForm() {
 
-  //TODO: Make controlled inputs
+  const [question, setQuestion] = useState('');
+  const [questionDetails, setQuestionDetails] = useState('');
   const [answers, setAnswers] = useState([{topic: '', details: ''}, {topic: '', details: ''}]);
+
+  const dispatch = useDispatch();
 
   const addAnswer = () => {
     setAnswers(oldAnswers => [...oldAnswers, { topic: '', details: ''}])
   }
 
   const subAnswer = () => {
-    console.log('--old', answers)
     setAnswers(oldAnswers => {
       const sliced = oldAnswers.slice(0, oldAnswers.length - 1);
       return sliced;
     })
-    console.log('--new', answers)
+  }
+
+  const handleSubmit = (event)  => {
+    event.preventDefault();
+    const questionData = {
+      question: {
+        title: question,
+        detail: questionDetails,
+      },
+      answers
+    }
   }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <ul>
         {/*error handling*/}
       </ul>
@@ -30,7 +43,9 @@ function AskForm() {
         </label>
         <input
           type='text'
-          placeholder='Your question...'
+          value={question}
+          onChange={e=> setQuestion(e.target.value)}
+          placeholder='Type your question...'
           required
         />
       </div>
@@ -39,16 +54,20 @@ function AskForm() {
           Question Details
         </label>
         <textarea
+          value={questionDetails}
+          onChange={e => setQuestionDetails(e.target.value)}
           placeholder='Information about your question.'
           required
         />
         { answers.map((answer, index) => (
           <AnswerInput key={`answer-${index}`} setAnswers={setAnswers} answer={answer} questionNumber={index} answers={answers}/>
         )) }
-        <input type='button' value='+' onClick={addAnswer} disabled={answers.length >= 10}/>
-        <input type='button' value='-' onClick={subAnswer} disabled={answers.length <= 2}/>
+        <div className='alter-form-buttons'>
+          <input type='button' className='alter-form-button' value='-' onClick={subAnswer} disabled={answers.length <= 2}/>
+          <input type='button' className='alter-form-button' value='+' onClick={addAnswer} disabled={answers.length >= 10}/>
+        </div>
       </div>
-
+      <button type='submit'>Submit</button>
     </form>
   )
 }

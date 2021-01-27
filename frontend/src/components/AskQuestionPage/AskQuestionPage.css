@@ -2,3 +2,13 @@
   display: flex;
   flex-direction: column;
 }
+
+.alter-form-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.alter-form-button:disabled{
+  background-color: rgba(226, 226, 226, 0.431);
+  cursor: not-allowed;
+}
