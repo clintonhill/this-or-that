@@ -28,56 +28,58 @@ function SignupFormPage() {
 
   return (
     <form onSubmit={handleSubmit} className='modal-form'>
-      <div className='modal-form__title'>Sign Up</div>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <div className='modal-form__form-field'>
-        <label>
-          Email
-        </label>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div className='modal-form__form-field'>
-        <label>
-          Username
-        </label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </div>
-      <div className='modal-form__form-field'>
-        <label>
-          Password
-        </label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-      <div className='modal-form__form-field'>
-        <label>
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </div>
-      <div className='modal-form__button'>
-        <button type="submit">Sign Up</button>
+      <div className='modal-form__form'>
+        <div className='modal-form__title'>Sign Up</div>
+        <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
+        <div className='modal-form__form-field'>
+          <label>
+            Email
+          </label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className='modal-form__form-field'>
+          <label>
+            Username
+          </label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className='modal-form__form-field'>
+          <label>
+            Password
+          </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className='modal-form__form-field'>
+          <label>
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className='modal-form__button'>
+          <button type="submit">Sign Up</button>
+        </div>
       </div>
     </form>
   );

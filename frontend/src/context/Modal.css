@@ -27,10 +27,14 @@
 
 .modal-form {
   width: 30vw;
-  height: 50vh;
+  height: 50%;
+}
+
+.modal-form__form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%
 }
 
 .modal-form__title {
