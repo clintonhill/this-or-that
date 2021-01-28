@@ -21,7 +21,7 @@ export const addQuestion = data => async (dispatch) => {
   //Question
   const { title, body} = data.question;
   const { ownerId } = data;
-  const slug = 'sdfsdfsdfsd';
+  const slug = nanoid();
 
   const opts = {
     method: 'post',

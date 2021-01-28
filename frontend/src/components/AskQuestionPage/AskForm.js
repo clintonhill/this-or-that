@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AnswerInput from './AnswerInput';
 import { addQuestion } from '../../store/questions'
+import { useHistory } from 'react-router-dom';
 
 function AskForm() {
 
@@ -10,6 +11,7 @@ function AskForm() {
   const [answers, setAnswers] = useState([{topic: '', details: ''}, {topic: '', details: ''}]);
 
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user)
 
   const addAnswer = () => {
@@ -34,6 +36,7 @@ function AskForm() {
       ownerId: sessionUser.id
     }
     dispatch(addQuestion(questionData))
+    history.push('/')
   }
 
   return (
