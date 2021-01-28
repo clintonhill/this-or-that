@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
 
-import { Pie, Chart } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 
 import './QuestionsPage.css';
 

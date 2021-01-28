@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 
 import sessionReducer from './session';
 import questionsReducer from './questions';
+import answersReducer from './answers'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   questions: questionsReducer,
+  answers: answersReducer,
 });
 
 let enhancer;

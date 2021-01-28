@@ -34,7 +34,6 @@ export const addQuestion = data => async (dispatch) => {
 
 //Reducer
 
-//Add case FOR Set Question
 export default function questionsReducer(state = {}, action){
   let newState;
   switch(action.type) {

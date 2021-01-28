@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function AnswerInput( {setAnswers, answer, questionNumber, answers} ) {
+function AnswerInput( {setAnswers, questionNumber, answers} ) {
 
   return (
     <>

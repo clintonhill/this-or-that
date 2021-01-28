@@ -25,7 +25,7 @@ function AskForm() {
     })
   }
 
-  const handleSubmit = (event)  => {
+  const handleSubmit = async(event)  => {
     event.preventDefault();
     const questionData = {
       question: {
@@ -35,7 +35,9 @@ function AskForm() {
       answers,
       ownerId: sessionUser.id
     }
-    dispatch(addQuestion(questionData))
+    const response = await dispatch(addQuestion(questionData));
+    const questionId = response.data.question.id;
+    dispatch(addAnswer(questionData, questionId))
     history.push('/')
   }
 
