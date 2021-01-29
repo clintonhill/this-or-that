@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { Topic } = require('../../db/models');
+const { Topic, Answer } = require('../../db/models');
 
 const router = express.Router();
 
@@ -16,6 +16,16 @@ router.post(
       question
     });
   }),
+);
+
+router.get('/:id', asyncHandler(async (req, res) => {
+    const id = +req.params.id;
+    const question = await Topic.findOne({
+      where: id,
+      include: Answer
+    })
+    res.json({question});
+  })
 );
 
 module.exports = router;

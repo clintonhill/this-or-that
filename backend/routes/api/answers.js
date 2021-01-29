@@ -2,6 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { Answer } = require('../../db/models');
+const answer = require('../../db/models/answer');
 
 const router = express.Router();
 
@@ -9,11 +10,18 @@ const router = express.Router();
 router.post(
   '',
   asyncHandler(async (req, res) => {
-    const { topicId, header, body } = req.body;
-    const answer = await Answer.create({ topicId, header, body })
+    const { answers, topicId } = req.body;
+
+    for(let answer of answers) {
+      answer.topicId = topicId;
+    }
+
+    const answerResponse = await Answer.bulkCreate(answers);
+
+    //const answer = await Answer.create({ topicId, header, body })
 
     return res.json({
-      answer
+      answerResponse
     });
   }),
 );

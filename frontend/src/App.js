@@ -9,6 +9,7 @@ import IndexPage from './components/IndexPage';
 import AskQuestionPage from "./components/AskQuestionPage";
 import ProfilePage from "./components/ProfilePage";
 import RandomQuestionPage from "./components/RandomQuestionPage";
+import QuestionsDetailPage from "./components/QuestionsDetailPage";
 
 const questionMock = {
   question: {
@@ -58,6 +59,9 @@ function App() {
           </Route>
           <Route exact path='/questions'>
             <QuestionsPage questionDetails={questionMock}/>
+          </Route>
+          <Route path='/questions/:questionId'>
+            <QuestionsDetailPage />
           </Route>
           <Route exact path='/random'>
             <RandomQuestionPage />

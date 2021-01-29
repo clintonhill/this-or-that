@@ -12,3 +12,21 @@
   background-color: rgba(226, 226, 226, 0.431);
   cursor: not-allowed;
 }
+
+.required {
+  font-size: 1rem;
+  color: rgb(194, 140, 140);
+}
+
+.character-counter {
+  font-size: 1rem;
+  color: rgb(140, 179, 216);
+  margin: 0;
+  padding: 0;
+  align-self: flex-end;
+}
+
+.no-bottom-padding {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}

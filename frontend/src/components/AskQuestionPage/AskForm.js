@@ -2,20 +2,22 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AnswerInput from './AnswerInput';
 import { addQuestion } from '../../store/questions'
+import { addAnswers } from '../../store/answers'
 import { useHistory } from 'react-router-dom';
+import CharacterCounter from './CharacterCounter'
 
 function AskForm() {
 
   const [question, setQuestion] = useState('');
   const [questionDetails, setQuestionDetails] = useState('');
-  const [answers, setAnswers] = useState([{topic: '', details: ''}, {topic: '', details: ''}]);
+  const [answers, setAnswers] = useState([{header: '', body: ''}, {header: '', body: ''}]);
 
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user)
 
   const addAnswer = () => {
-    setAnswers(oldAnswers => [...oldAnswers, { topic: '', details: ''}])
+    setAnswers(oldAnswers => [...oldAnswers, { header: '', body: ''}])
   }
 
   const subAnswer = () => {
@@ -36,9 +38,9 @@ function AskForm() {
       ownerId: sessionUser.id
     }
     const response = await dispatch(addQuestion(questionData));
-    const questionId = response.data.question.id;
-    dispatch(addAnswer(questionData, questionId))
-    history.push('/')
+    const topicId = response.data.question.id;
+    dispatch(addAnswers(questionData, topicId))
+    history.push(`/questions/${topicId}`)
   }
 
   return (
@@ -48,26 +50,30 @@ function AskForm() {
       </ul>
       <div className='form-field'>
         <label>
-          Question
+          Question <span className='required'>required</span>
         </label>
         <input
+          className='no-bottom-padding'
           type='text'
           value={question}
           onChange={e=> setQuestion(e.target.value)}
           placeholder='Type your question...'
           required
         />
+        <CharacterCounter maxCount={256} currentCount={question.length}/>
       </div>
       <div className='form-field'>
         <label>
-          Question Details
+          Question Details <span className='required'>required</span>
         </label>
         <textarea
+          className='no-bottom-padding'
           value={questionDetails}
           onChange={e => setQuestionDetails(e.target.value)}
           placeholder='Information about your question.'
           required
         />
+        <CharacterCounter maxCount={512} currentCount={questionDetails.length}/>
         { answers.map((answer, index) => (
           <AnswerInput key={`answer-${index}`} setAnswers={setAnswers} answer={answer} questionNumber={index} answers={answers}/>
         )) }

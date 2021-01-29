@@ -4,7 +4,7 @@ import { fetch } from './csrf';
 
 // Action Constants
 
-const SET_QUESTION = 'questions/setQuestion'
+export const SET_QUESTION = 'questions/setQuestion'
 
 //Action Creators
 
@@ -16,6 +16,14 @@ const setQuestion = (question) => {
 }
 
 //Thunk Creators
+
+export const getQuestionById = (questionId) => async (dispatch) => {
+  const response = await fetch(`/api/questions/${questionId}`);
+  if(response.ok) {
+    console.log(response.data.question)
+    dispatch(setQuestion(response.data.question))
+  }
+}
 
 export const addQuestion = data => async (dispatch) => {
   //Question
@@ -35,10 +43,10 @@ export const addQuestion = data => async (dispatch) => {
 //Reducer
 
 export default function questionsReducer(state = {}, action){
-  let newState;
+  let newState = {...state};
   switch(action.type) {
     case SET_QUESTION:
-      newState = {...state, ...action.payload}
+      newState[action.payload.id] = action.payload;
       return newState;
     default:
       return state;
