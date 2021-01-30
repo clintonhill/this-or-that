@@ -2,6 +2,7 @@ import { fetch } from './csrf';
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+const SET_IP = 'session/setIPId'
 
 const setUser = (user) => {
   return {
@@ -15,6 +16,20 @@ const removeUser = () => {
     type: REMOVE_USER,
   };
 };
+
+const setIPId = (ipId) => {
+  return {
+    type: SET_IP,
+    payload: ipId
+  }
+}
+
+export const getIPId = () => async (dispatch) => {
+  const response = await fetch('/api/ip');
+  dispatch(setIPId(response.data.ipId))
+  console.log('****', response.data.ipId)
+  return response;
+}
 
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
@@ -41,6 +56,10 @@ const sessionReducer = (state = initialState, action) => {
     case REMOVE_USER:
       newState = Object.assign({}, state);
       newState.user = null;
+      return newState;
+    case SET_IP:
+      newState = Object.assign({}, state);
+      newState.ipId = action.payload;
       return newState;
     default:
       return state;

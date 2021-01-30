@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     Answer.belongsTo(models.Topic, { foreignKey: 'topicId' });
     Answer.belongsToMany(models.IP, ipAssociation);
+    Answer.hasMany(models.Vote, { foreignKey: 'answerId'} )
   };
   return Answer;
 };

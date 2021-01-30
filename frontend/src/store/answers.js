@@ -22,7 +22,6 @@ export const addAnswers = (data, topicId) => async (dispatch) => {
     body: JSON.stringify({answers: data.answers, topicId})
   }
   const response = await fetch('/api/answers', opts)
-  debugger;
   dispatch(setAnswers(response.data.answerResponse))
   return response;
 }
