@@ -19,6 +19,27 @@ router.post(
   }),
 );
 
+router.get('/page/:pageNum', asyncHandler(async (req, res) => {
+  const pageNumber = +req.params.pageNum;
+
+  const paginate = ({ page, numResults }) => {
+    const offset = page * (numResults -1);
+    const limit = numResults;
+
+    return {
+      offset,
+      limit,
+    };
+  };
+
+  const questions = await Topic.findAll(
+    paginate( {page: pageNumber-1, numResults: 16} )
+  )
+
+  return res.json({questions})
+
+}))
+
 router.get('/:id', asyncHandler(async (req, res) => {
     const id = +req.params.id;
     const question = await Topic.findOne({

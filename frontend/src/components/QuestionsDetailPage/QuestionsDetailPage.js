@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getQuestionById } from '../../store/questions'
@@ -13,24 +13,25 @@ function QuestionsDetailPage() {
   let question = useSelector(state => state.questions[questionId])
   const answers = useSelector(state => state.answers[questionId]);
   const userIPId = useSelector(state => state.session.ipId)
+  const [isAnswered, setIsAnswered] = useState(false);
 
   useEffect(() => {
     dispatch(getQuestionById(questionId))
   }, [dispatch, questionId])
 
-  const isAnswered = answers && answers.find(answer => {
-    const votes = answer.Votes;
-    for( let vote of Object.values(votes) ) {
-      if(vote.ipId === userIPId) return true;
+  useEffect(() => {
+    if(answers && answers.find(answer => {
+      const votes = answer.Votes;
+      for( let vote of Object.values(votes) ) {
+        if(vote.ipId === userIPId) return true;
+      }
+      return false;
+    })) {
+      setIsAnswered(true);
+    } else {
+      setIsAnswered(false);
     }
-    return false;
-  })
-  let answerSection;
-  if(!isAnswered) {
-    answerSection = <UnansweredQuestion answers={answers} />
-  } else {
-    answerSection = <AnsweredQuestion answers={answers} questionId={questionId} />
-  }
+  },[answers, userIPId])
 
   return (
     <div className='container'>
@@ -45,7 +46,8 @@ function QuestionsDetailPage() {
           {question && question.body}
         </div>
       </div>
-        {answerSection}
+        {isAnswered && <AnsweredQuestion answers={answers} />}
+        {!isAnswered && <UnansweredQuestion answers={answers} />}
     </div>
   )
 }

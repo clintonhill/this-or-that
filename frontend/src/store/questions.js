@@ -5,6 +5,7 @@ import { fetch } from './csrf';
 // Action Constants
 
 export const SET_QUESTION = 'questions/setQuestion'
+export const SET_QUESTIONS = 'questions/setQuestions'
 
 //Action Creators
 
@@ -12,6 +13,13 @@ const setQuestion = (question) => {
   return {
     type: SET_QUESTION,
     payload: question
+  }
+}
+
+const setQuestions = (questions) => {
+  return {
+    type: SET_QUESTIONS,
+    payload: questions
   }
 }
 
@@ -23,6 +31,14 @@ export const getQuestionById = (questionId) => async (dispatch) => {
     console.log(response.data.question)
     dispatch(setQuestion(response.data.question))
   }
+}
+
+export const getQuestionsForPage = (pageNum) => async (dispatch) => {
+
+  const response = await fetch(`/api/questions/page/${pageNum}`)
+
+  dispatch(setQuestions(response.data.questions))
+  return response;
 }
 
 export const addQuestion = data => async (dispatch) => {
@@ -47,6 +63,13 @@ export default function questionsReducer(state = {}, action){
   switch(action.type) {
     case SET_QUESTION:
       newState[action.payload.id] = action.payload;
+      return newState;
+    case SET_QUESTIONS:
+      newState.loadedQuestions = []
+      for(let i = 0; i < 16; i++){
+        if(action.payload[i])
+          newState.loadedQuestions[i] = action.payload[i]
+      }
       return newState;
     default:
       return state;
