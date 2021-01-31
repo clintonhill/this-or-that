@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     slug: {
-      type: DataTypes.STRING(12),
+      type: DataTypes.STRING(21),
       allowNull: false,
     },
   }, {});

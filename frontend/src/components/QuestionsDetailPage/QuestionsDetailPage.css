@@ -1,0 +1,33 @@
+.main-header {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.question-header, .answer-header {
+  font-size: 2rem;
+}
+
+.question-detail {
+  font-size: 1.5rem;
+}
+
+.container {
+  margin-left: 150px;
+  margin-top: 20px;
+}
+
+.poll-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.poll-box:hover {
+  background-color: rgb(246, 246, 246);
+}
+
+.vote-button {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+}

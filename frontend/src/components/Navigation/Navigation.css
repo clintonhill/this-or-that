@@ -9,6 +9,7 @@
 .buttons {
   height: 80%;
   display: flex;
+  margin-right:12px;
 }
 
 .buttons > ul {

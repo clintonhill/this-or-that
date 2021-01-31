@@ -5,19 +5,13 @@
 
 .question-header, .answer-header {
   font-size: 2rem;
-  padding-left: 20px;
 }
 
 .question-detail {
   font-size: 1.5rem;
-  padding-left: 20px;
-}
-
-.question-box, .answer-box {
-  margin-left: 50px;
 }
 
 .container {
-  margin-left: 100px;
+  margin-left: 150px;
   margin-top: 20px;
 }

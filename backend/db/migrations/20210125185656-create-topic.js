@@ -22,7 +22,7 @@ module.exports = {
       },
       slug: {
         allowNull: false,
-        type: Sequelize.STRING(12),
+        type: Sequelize.STRING(21),
         unique: true
       },
       createdAt: {

@@ -1,0 +1,29 @@
+.question-row__main {
+  width: 100%;
+  border: 2px dashed black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-row__main:hover {
+  cursor: pointer;
+  background-color: rgb(246, 246, 246);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pagination button:disabled {
+  background-color: rgba(226, 226, 226, 0.431);
+  cursor: not-allowed;
+}

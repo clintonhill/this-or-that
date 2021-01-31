@@ -10,16 +10,16 @@ function Sidebar(){
           <NavLink exact to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink exact to="#">Profile</NavLink>
+          <NavLink exact to="/profile">Profile</NavLink>
         </li>
         <li>
-          <NavLink exact to="#">Ask a Question</NavLink>
+          <NavLink exact to="/ask">Ask a Question</NavLink>
         </li>
         <li>
           <NavLink exact to="/questions">Browse Questions</NavLink>
         </li>
         <li>
-          <NavLink exact to="#">Random Question</NavLink>
+          <NavLink exact to="/random">Random Question</NavLink>
         </li>
       </ul>
     </div>
