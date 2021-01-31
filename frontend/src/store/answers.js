@@ -1,5 +1,6 @@
 import { fetch } from './csrf';
 import { SET_QUESTION } from './questions'
+import { SET_VOTE } from './votes'
 
 // Action Constants
 
@@ -26,6 +27,12 @@ export const addAnswers = (data, topicId) => async (dispatch) => {
   return response;
 }
 
+// export const getAnswers = (topicId) => async (dispatch) => {
+//   const response = await fetch(`/api/answers/${topicId}`)
+//   dispatch(setAnswers(response.data.answers))
+//   return response;
+// }
+
 //Reducer
 
 export default function answersReducer(state = {}, action) {
@@ -41,6 +48,9 @@ export default function answersReducer(state = {}, action) {
     case SET_QUESTION:
       newState[action.payload.id] = action.payload.Answers;
       return newState;
+    // case SET_VOTE:
+    //   newState[action.payload.answerId] = action.payload.id;
+    //   return newState;
     default:
       return state;
   }

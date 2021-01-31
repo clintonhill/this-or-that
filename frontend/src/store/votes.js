@@ -2,7 +2,7 @@ import { fetch } from './csrf';
 
 // Action Constants
 
-const SET_VOTE = 'votes/setOneVote'
+export const SET_VOTE = 'votes/setOneVote'
 
 //Action Creators
 

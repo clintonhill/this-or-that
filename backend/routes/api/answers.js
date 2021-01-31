@@ -1,12 +1,11 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { Answer } = require('../../db/models');
+const { Answer, Vote } = require('../../db/models');
 const answer = require('../../db/models/answer');
 
 const router = express.Router();
 
-// Sign up
 router.post(
   '',
   asyncHandler(async (req, res) => {
@@ -25,5 +24,18 @@ router.post(
     });
   }),
 );
+
+router.get('/:topicId', asyncHandler( async (req, res) => {
+  const topicId = +req.params.topicId;
+  const answers = await Answer.findAll({
+    where: { topicId },
+    include: {
+      model: Vote,
+      attributes: ['ipId']
+    }
+  })
+
+  return res.json({answers});
+}))
 
 module.exports = router;

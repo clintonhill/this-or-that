@@ -12,12 +12,13 @@ function QuestionsDetailPage() {
   const dispatch = useDispatch ();
   let question = useSelector(state => state.questions[questionId])
   const answers = useSelector(state => state.answers[questionId]);
+  const votes = useSelector(state => state.votes)
   const userIPId = useSelector(state => state.session.ipId)
   const [isAnswered, setIsAnswered] = useState(false);
 
   useEffect(() => {
     dispatch(getQuestionById(questionId))
-  }, [dispatch, questionId])
+  }, [dispatch, questionId, votes])
 
   useEffect(() => {
     if(answers && answers.find(answer => {
@@ -31,7 +32,7 @@ function QuestionsDetailPage() {
     } else {
       setIsAnswered(false);
     }
-  },[answers, userIPId])
+  },[answers, userIPId, votes])
 
   return (
     <div className='container'>

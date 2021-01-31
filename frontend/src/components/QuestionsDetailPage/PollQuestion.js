@@ -7,9 +7,9 @@ export default function PollQuestion( { answer } ) {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   const voteSubmit = () => {
-    console.log('answerId', answer.id);
-    dispatch(addVote(answer.id, user.id));
-    history.push(`/questions/${answer.topicId}`)
+
+    dispatch(addVote(answer.id, user.id))
+    // history.push(`/questions/${answer.topicId}`)
   }
 
   return (
