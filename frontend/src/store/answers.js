@@ -1,6 +1,5 @@
 import { fetch } from './csrf';
 import { SET_QUESTION } from './questions'
-import { SET_VOTE } from './votes'
 
 // Action Constants
 

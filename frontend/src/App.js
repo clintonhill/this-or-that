@@ -68,8 +68,7 @@ function App() {
             <QuestionsDetailPage />
           </Route>
           <Route exact path='/random'>
-            {/* <RandomQuestionPage /> */}
-            <QuestionsPage questionDetails={questionMock}/>
+            <RandomQuestionPage />
           </Route>
         </Switch>
       )}

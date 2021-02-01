@@ -43,6 +43,15 @@ function AskForm() {
     history.push(`/questions/${topicId}`)
   }
 
+  if(!sessionUser) {
+    return (
+    <>
+      <h4>Sorry, only registered users can ask questions.</h4>
+      <h6>The good news is that you can log in, or sign up for a free account!</h6>
+    </>
+    )
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <ul>
@@ -79,7 +88,7 @@ function AskForm() {
         )) }
         <div className='alter-form-buttons'>
           <input type='button' className='alter-form-button' value='-' onClick={subAnswer} disabled={answers.length <= 2}/>
-          <input type='button' className='alter-form-button' value='+' onClick={addAnswer} disabled={answers.length >= 10}/>
+          <input type='button' className='alter-form-button' value='+' onClick={addAnswer} disabled={answers.length >= 50}/>
         </div>
       </div>
       <button type='submit'>Submit</button>
