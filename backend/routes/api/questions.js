@@ -1,5 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const Sequelize = require('sequelize');
 
 const { Topic, Answer, Vote } = require('../../db/models');
 const vote = require('../../db/models/vote');
@@ -38,6 +39,25 @@ router.get('/page/:pageNum', asyncHandler(async (req, res) => {
 
   return res.json({questions})
 
+}))
+
+router.get('/user/:userId', asyncHandler(async (req, res) => {
+  const userId = +req.params.userId;
+
+  const questions = await Topic.findAll({
+    where: { ownerId: userId }
+  })
+
+  return res.json({questions})
+
+}))
+
+router.get('/random', asyncHandler(async (req, res) => {
+  const question = await Topic.findOne( {
+    order: Sequelize.literal('random()')
+   })
+
+  return res.json({question})
 }))
 
 router.get('/:id', asyncHandler(async (req, res) => {

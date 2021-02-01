@@ -11,7 +11,6 @@ function BrowseQuestionsPage() {
   const dispatch = useDispatch();
   const loadedQuestions = useSelector(state => state.questions.loadedQuestions)
   const [page, setPage] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(true);
 
   useEffect(() => {
     dispatch(getQuestionsForPage(page));
@@ -25,7 +24,7 @@ function BrowseQuestionsPage() {
       </div>
       <div>
         {loadedQuestions && loadedQuestions.map((question, idx) => {
-          { if(idx < 15) return <QuestionRow question={question}/>}
+          if(idx < 15) return <QuestionRow question={question}/>
       })}
       </div>
       <div className='pagination'>

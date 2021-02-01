@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenFancy } from '@fortawesome/free-solid-svg-icons'
 import { useHistory } from 'react-router-dom'
 
 export default function QuestionRow({question}) {
@@ -9,7 +7,7 @@ export default function QuestionRow({question}) {
   }
   return (
     <div className='question-row__main' onClick={sendToQuestionPage}>
-      {question && question.title} <span className='isAnswered'> <FontAwesomeIcon icon={faPenFancy} size='lg'/></span>
+      {question && question.title}
     </div>
   )
 }

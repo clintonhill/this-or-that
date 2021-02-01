@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { addVote } from '../../store/votes'
 
 export default function PollQuestion( { answer } ) {
-  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
   const voteSubmit = () => {
@@ -12,7 +10,6 @@ export default function PollQuestion( { answer } ) {
     } else {
       dispatch(addVote(answer.id, user.id))
     }
-    // history.push(`/questions/${answer.topicId}`)
   }
 
   return (

@@ -1,9 +1,6 @@
-import { useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { useDispatch } from 'react-redux';
 
 function QuestionsPage({ answers, questionId }) {
-  const dispatch = useDispatch();
 
   if(!answers) return null;
   const labels = answers.map(answer=> answer.header)
