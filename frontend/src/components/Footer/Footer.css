@@ -1,12 +1,12 @@
 .footer__container {
   width: 100%;
-  height: 4rem;
   background-color: mistyrose;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 4rem;
 }
 
 .footer__contents {

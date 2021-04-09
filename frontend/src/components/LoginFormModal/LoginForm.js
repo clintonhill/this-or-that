@@ -20,6 +20,11 @@ function LoginForm() {
     );
   };
 
+  const demo = () => {
+    setCredential('demo@user.io')
+    setPassword('password')
+  }
+
   return (
       <form onSubmit={handleSubmit} className='modal-form'>
         <div className='modal-form__form'>
@@ -51,6 +56,7 @@ function LoginForm() {
               required
             />
           </div>
+          <div className='demo-user'>Don't have an account? Click <span onClick={demo}>here</span> to login as a demo user.</div>
           <div className='modal-form__button'>
             <button type="submit">Log In</button>
           </div>

@@ -34,7 +34,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%
+  height: auto;
 }
 
 .modal-form__title {
@@ -63,4 +63,14 @@
   width: 100%;
   background: #FD9D93;
   border-radius: 0;
+  margin-top: 10px;
+}
+
+.demo-user {
+  text-align: center;
+}
+
+.demo-user span {
+  cursor: pointer;
+  color: #1EAEDB;
 }
