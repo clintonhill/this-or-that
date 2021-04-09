@@ -9,20 +9,16 @@ import './RandomQuestionPage.css';
 function RandomQuestionPage() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [questionId, setQuestionId] = useState();
 
   useEffect(() => {
-    console.log('.........')
     async function fetchQuestion() {
     const returnedId = await dispatch(getRandomQuestion())
-    console.log('....')
     if(returnedId) {
-      setQuestionId(returnedId)
-      history.push(`/questions/${questionId}`);
+      history.push(`/questions/${returnedId}`);
     }
   }
   fetchQuestion();
-  }, [setQuestionId, dispatch, history, questionId])
+  }, [dispatch, history])
 
   return (
     <div className='container'>

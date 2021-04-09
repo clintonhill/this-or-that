@@ -88,7 +88,7 @@ function AskForm() {
         )) }
         <div className='alter-form-buttons'>
           <input type='button' className='alter-form-button' value='-' onClick={subAnswer} disabled={answers.length <= 2}/>
-          <input type='button' className='alter-form-button' value='+' onClick={addAnswer} disabled={answers.length >= 50}/>
+          <input type='button' className='alter-form-button' value='+' onClick={addAnswer} disabled={answers.length >= 10}/>
         </div>
       </div>
       <button type='submit'>Submit</button>

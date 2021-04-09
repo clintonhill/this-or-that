@@ -27,7 +27,6 @@ const setIPId = (ipId) => {
 export const getIPId = () => async (dispatch) => {
   const response = await fetch('/api/ip');
   dispatch(setIPId(response.data.ipId))
-  console.log('****', response.data.ipId)
   return response;
 }
 

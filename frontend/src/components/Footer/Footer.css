@@ -1,0 +1,23 @@
+.footer__container {
+  width: 100%;
+  height: 4rem;
+  background-color: mistyrose;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__contents {
+  width: 80%;
+  display: flex;
+  /* background-color:red; */
+  justify-content: space-between;
+}
+
+.footer__connect {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
